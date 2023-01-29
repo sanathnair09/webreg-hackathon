@@ -5,6 +5,8 @@ import { HiOutlineTrash } from "react-icons/hi"
 import { SegmentedButtonText } from "../segemented/SegmentedButton";
 import { Modal, Button } from "react-bootstrap";
 import Form from "react-bootstrap/Form";
+import store from "../../redux/store";
+
 
 const day = ["M", "T", "W", "T", "F", "S", "S"];
 const IntheBag = {
@@ -42,6 +44,8 @@ function ScheduleOfClassesBar(props) {
     //submit to the calander
     setModalShow(false);
     //dispatch for redux
+    store.dispatch({type:"EnrollEverything"})
+    return
   };
   return (
     <div className="flex w-1/2 ml-2 mr-1 bg-inner-background rounded-lg p-2 items-center justify-between">

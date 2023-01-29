@@ -4,7 +4,7 @@ const IntheStudyList = {
   courses: [
     {
       id: 62836,
-      departmentName: "ENG",
+      departmentName: "ENGR",
       courseLevel: "7B",
       type: "LEC",
       pass: false,
@@ -102,7 +102,7 @@ const IntheBag = {
       Instructor: "Serate, K.",
       day: [4],
       time: [8,11],
-      opacity: 1,
+      opacity: 0.8,
     },
   ],
 };
@@ -111,7 +111,7 @@ export default function reducer(
   prevData = [
     {
       bag: IntheBag,
-      calander: IntheStudyList,
+      enrolled: IntheStudyList,
       unitsApplied: 0,
       unitsInBag: 0,
     },
@@ -133,6 +133,18 @@ export default function reducer(
       return newData;
     case "EnrollEverything":
       //remove ghosting : change opacity to 1
+
+      newData[0].bag.courses.map((route,key) =>(
+        route.opacity = 1
+      ))
+      
+      newData[0].bag.courses.map((route,key)=>(
+        newData[0].enrolled.courses.push(route)
+      ))
+
+      
+      
+      console.log(newData[0].enrolled.courses)
 
       return newData;
     case "PassToggle":
